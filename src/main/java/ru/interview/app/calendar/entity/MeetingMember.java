@@ -7,6 +7,8 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,7 +23,7 @@ import javax.persistence.Table;
 public class MeetingMember {
 
     @EmbeddedId
-    private UserMeetingKey id;
+    private MemberMeetingId id = new MemberMeetingId();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("userId")
@@ -33,5 +35,6 @@ public class MeetingMember {
     @JoinColumn(name = "meeting_id")
     private Meeting meeting;
 
-    private boolean invitationAccepted;
+    @Enumerated(EnumType.STRING)
+    private MemberStatus memberStatus = MemberStatus.NONE;
 }

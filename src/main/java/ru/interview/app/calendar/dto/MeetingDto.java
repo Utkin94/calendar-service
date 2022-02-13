@@ -1,4 +1,4 @@
-package ru.interview.app.calendar.controller.dto;
+package ru.interview.app.calendar.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,18 +1,18 @@
 package ru.interview.app.calendar.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.experimental.Accessors;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
-@Accessors(chain = true)
-@Setter
-@Getter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Embeddable
-public class UserMeetingKey implements Serializable {
+public class MemberMeetingId implements Serializable {
 
     @Column(name = "user_id")
     private Long userId;

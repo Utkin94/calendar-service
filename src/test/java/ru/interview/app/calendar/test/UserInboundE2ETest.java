@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
-import ru.interview.app.calendar.controller.dto.UserDto;
+import ru.interview.app.calendar.dto.UserDto;
 import ru.interview.app.calendar.entity.User;
 
 import java.util.ArrayList;

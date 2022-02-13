@@ -1,3 +1,11 @@
 spring:
   liquibase:
     change-log: db/changelog/changeLog.xml
+  datasource:
+    driverClassName: org.postgresql.Driver
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: ALWAYS
+    properties:
+      org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate

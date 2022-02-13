@@ -1,8 +1,10 @@
-package ru.interview.app.calendar.controller.dto.request;
+package ru.interview.app.calendar.dto.request;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import ru.interview.app.calendar.entity.MeetingStatus;
+import ru.interview.app.calendar.validation.HourQuarter;
 
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
@@ -23,11 +25,15 @@ public class MeetingCreate {
 
     @Future
     @NotNull
+    @HourQuarter
     private ZonedDateTime meetingStartTime;
 
     @Future
     @NotNull
+    @HourQuarter
     private ZonedDateTime meetingEndTime;
+
+    private MeetingStatus status = MeetingStatus.OPEN;
 
     private Set<Long> memberUserIds;
 }

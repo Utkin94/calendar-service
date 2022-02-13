@@ -22,7 +22,7 @@ import java.util.List;
 @Entity
 @Table(schema = "calendar", name = "users")
 @SequenceGenerator(name = "user_id_seq", schema = "calendar", sequenceName = "users_id_seq", allocationSize = 1)
-public class User {
+public class User extends Aggregate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")

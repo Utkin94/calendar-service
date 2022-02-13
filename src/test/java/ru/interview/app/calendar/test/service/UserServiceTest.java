@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.interview.app.calendar.entity.User;
 import ru.interview.app.calendar.repository.UserRepository;
+import ru.interview.app.calendar.service.ValidationService;
 import ru.interview.app.calendar.service.impl.UserServiceImpl;
 
 import java.util.ArrayList;
@@ -28,9 +29,9 @@ public class UserServiceTest {
     private UserServiceImpl userService;
 
     @BeforeAll
-    public void init(@Mock UserRepository userRepository) {
+    public void init(@Mock UserRepository userRepository, @Mock ValidationService validationService) {
         this.userRepository = userRepository;
-        this.userService = new UserServiceImpl(userRepository);
+        this.userService = new UserServiceImpl(userRepository, validationService);
     }
 
     @BeforeEach

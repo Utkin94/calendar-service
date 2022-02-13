@@ -6,6 +6,8 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +26,7 @@ import java.util.List;
 @Entity
 @Table(name = "meetings", schema = "calendar")
 @SequenceGenerator(name = "meeting_id_seq", schema = "calendar", sequenceName = "meeting_id_seq", allocationSize = 1)
-public class Meeting {
+public class Meeting extends Aggregate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "meeting_id_seq")
@@ -36,10 +38,13 @@ public class Meeting {
 
     private ZonedDateTime endTime;
 
+    @Enumerated(EnumType.STRING)
+    private MeetingStatus status;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_user_id")
     private User creator;
 
-    @OneToMany(mappedBy = "meeting", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "meeting", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<MeetingMember> members;
 }
