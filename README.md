@@ -2,7 +2,11 @@
 
 Run:
 
-1 ./mvnw clean package
-2. docker-compose up
+```
+./mvnw clean package
+```
+```
+docker-compose up
+```
 
 Swagger link: http://localhost:8080/swagger-ui/index.html
