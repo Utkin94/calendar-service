@@ -34,6 +34,10 @@ public class NotificationCreatorServiceImpl implements NotificationCreatorServic
 
     @SneakyThrows
     private void createMeetingBeforeStartNotification(long meetingId, ZonedDateTime startTime) {
+        if (isMeetingStartsInLessThenOneHour(startTime)) {
+            return;
+        }
+
         var jobDetail = JobBuilder.newJob()
                 .ofType(MeetingNotifyBeforeHourJob.class)
                 .withIdentity(UUID.randomUUID().toString())
@@ -47,6 +51,10 @@ public class NotificationCreatorServiceImpl implements NotificationCreatorServic
                 .build();
 
         scheduler.scheduleJob(jobDetail, trigger);
+    }
+
+    private boolean isMeetingStartsInLessThenOneHour(ZonedDateTime startTime) {
+        return startTime.minusHours(1).isBefore(ZonedDateTime.now());
     }
 
     @SneakyThrows
