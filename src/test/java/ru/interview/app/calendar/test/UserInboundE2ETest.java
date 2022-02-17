@@ -77,7 +77,7 @@ public class UserInboundE2ETest extends CalendarCommonE2ETest {
 
     @ParameterizedTest
     @MethodSource("invalidUsersDto")
-    public void postUsersWithInvalidRequest_shouldReturnCreatedUserWithStatus200(UserDto invalidUser) throws Exception {
+    public void postUsersWithInvalidRequest_shouldReturnStatusCode400(UserDto invalidUser) throws Exception {
         mockMvc.perform(post("/users")
                         .content(objectMapper.writeValueAsString(invalidUser))
                         .contentType(MediaType.APPLICATION_JSON))
