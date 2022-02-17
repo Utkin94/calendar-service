@@ -31,9 +31,7 @@ public class IntervalUtils {
             }
         }
 
-        if (result != null && result.getSecond() > endInterval) {
-            return null;
-        } else if (result == null && (freePeriodStart + intervalLengthToSearch) <= endInterval) {
+        if (result == null && (freePeriodStart + intervalLengthToSearch) <= endInterval) {
             return Pair.of(freePeriodStart, endInterval);
         }
 
